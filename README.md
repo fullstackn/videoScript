@@ -19,5 +19,5 @@
 8. Go to https://developers.facebook.com/tools/debug/accesstoken/, paste token to the field, push "Debug", check info.
 9. Press "Extend Access token" in the bottom og the page
 10. The whole process of user access token generation is also described here - https://elfsight.com/blog/how-to-get-facebook-access-token/
-11. For scripts usage еру environment variable USER_FB_TOKEN should be assigned with value of generated access token
+11. For scripts usage environment variable USER_FB_TOKEN should be assigned with value of generated access token
 12. The whole process is pretty complicated, including linking up different facebook/instagram entities. This little manual does not claim to be fully accurate and complete; perhaps something is missing.   
