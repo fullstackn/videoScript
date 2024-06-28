@@ -1,4 +1,4 @@
-### User access token generation
+### User access token generation (facebook)
 
 1. Register facebook developer, linked with target facebook profile
 2. Go to https://developers.facebook.com/apps, press "Create App" button
@@ -21,4 +21,10 @@
 9. Press "Extend Access token" in the bottom of the page
 10. The whole process of user access token generation is also described here - https://elfsight.com/blog/how-to-get-facebook-access-token/
 11. For scripts usage environment variable USER_FB_TOKEN should be assigned with value of generated access token
-12. The whole process is pretty complicated, including linking up different facebook/instagram entities. This little manual does not claim to be fully accurate and complete; perhaps something is missing.   
+12. The whole process is pretty complicated, including linking up different facebook/instagram entities. This little manual does not claim to be fully accurate and complete; perhaps something is missing.
+
+TODO
+- threads
+- tiktok
+- snapchat
+- whatsapp
