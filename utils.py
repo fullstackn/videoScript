@@ -3,6 +3,8 @@ import os
 import time
 import requests
 
+from twitter import upload_tweet
+
 INTERVAL = 60
 BASE_URL = 'https://graph.facebook.com/v20.0'
 PERMANENT_USER_ACCESS_TOKEN = os.environ['USER_FB_TOKEN']
@@ -212,6 +214,14 @@ def run_videos(videos, destination='facebook'):
                         caption=video.get('video_description'),
                         tags=video.get('video_tags'),
                     )
+                elif destination == 'twitter':
+                    upload_tweet(
+                        video_path=video.get('video_file_path'),
+                        title=video.get('video_title'),
+                        caption=video.get('video_description'),
+                        tags=video.get('video_tags')
+                    )
+
                 print(f'upload succeed')
             except Exception as e:
                 print(f'Error: {e} on {video=}')
