@@ -1,15 +1,14 @@
 import os
-
 import tweepy
 
-from utils import get_full_caption
+from common import get_full_caption
 
-client_id = os.environ['TWITTER_CLIENT_ID']
-client_secret = os.environ['TWITTER_CLIENT_SECRET']
-access_token = os.environ['TWITTER_ACCESS_TOKEN']
-access_token_secret = os.environ['TWITTER_ACCESS_TOKEN_SECRET']
-api_key = os.environ['TWITTER_API_KEY']
-api_secret = os.environ['TWITTER_API_SECRET']
+client_id = os.environ.get('TWITTER_CLIENT_ID')
+client_secret = os.environ.get('TWITTER_CLIENT_SECRET')
+access_token = os.environ.get('TWITTER_ACCESS_TOKEN')
+access_token_secret = os.environ.get('TWITTER_ACCESS_TOKEN_SECRET')
+api_key = os.environ.get('TWITTER_API_KEY')
+api_secret = os.environ.get('TWITTER_API_SECRET')
 
 
 def get_twitter_conn_v1(api_key, api_secret, access_token, access_token_secret) -> tweepy.API:

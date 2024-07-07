@@ -3,11 +3,12 @@ import os
 import time
 import requests
 
+from common import get_full_caption
 from twitter import upload_tweet
 
 INTERVAL = 60
 BASE_URL = 'https://graph.facebook.com/v20.0'
-PERMANENT_USER_ACCESS_TOKEN = os.environ['USER_FB_TOKEN']
+PERMANENT_USER_ACCESS_TOKEN = os.environ.get('USER_FB_TOKEN')
 
 def api_call(endpoint, data=None, method='GET', headers=None):
     if endpoint.startswith('http'):
@@ -48,15 +49,6 @@ def get_instagram_id(page):
     instagram_business_account = instagram['instagram_business_account']['id']
     print(f'{instagram_business_account=}')
     return instagram_business_account
-
-
-def get_full_caption(title, caption, tags):
-    full_caption = ''
-    if title is not None and title != '':
-        full_caption += title + '\n'
-
-    full_caption += caption + '\n' + ' '.join([f'#{t}' for t in tags])
-    return full_caption
 
 
 def upload_instagram_reel(

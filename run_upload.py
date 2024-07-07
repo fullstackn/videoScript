@@ -31,4 +31,4 @@ videos = {
     }
 
 # ant the moment support only 'facebook' and 'instagram' destination
-run_videos(videos=videos, destination='facebook')
+run_videos(videos=videos, destination='twitter')

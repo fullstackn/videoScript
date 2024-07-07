@@ -23,8 +23,40 @@
 11. For scripts usage environment variable USER_FB_TOKEN should be assigned with value of generated access token
 12. The whole process is pretty complicated, including linking up different facebook/instagram entities. This little manual does not claim to be fully accurate and complete; perhaps something is missing.
 
+### User access token generation (Meta Threads)
+1. Register facebook developer, linked with target facebook profile
+2. Go to https://developers.facebook.com/apps, press "Create App" button
+3. Link with business portfolio, that is linked with target page and target instagram account
+4. On next screen choose "Access the Threads API" 
+5. Choose any name, press "Create App"
+6. Go to permissions, add "threads_content_publish"
+7. Go to settings, add to "Redirect Callback URLs"  https://oauth.pstmn.io/v1/browser-callback
+8. Go to postman.com account, in order to generate access_token.
+9. Create GET request, https://graph.threads.net/access_token?grant_type=th_exchange_token
+Params:
+- grant_type=th_exchange_token
+- client_secret - take from App
+10. On "Authorization" tab fill fields:
+- Header Prefix -access_token 
+- Auth URL - https://threads.net/oauth/authorize
+- Access Token URL - https://graph.threads.net/oauth/access_token
+- Client ID - take from App
+- Client Secret - take from App
+- Scope - threads_basic,threads_content_publish
+- Client Authentication - Send client credentials in body
+11. Press "Get New Access Token". After authorization through threads page, press "Proceed" 
+12. Copy user_id to corresponding placeholder in `threads.py` 
+13. Press "Send" on request, copy your access token from returned body: 
+```
+{
+    "access_token": "THQWJYdkZAvbVNDbDQyT...",
+    "token_type": "bearer",
+    "expires_in": 5174426
+}
+```
+14. Copy `access_token` to corresponding placeholder in `threads.py`
+15. This token expires in 60 days.
+
 TODO
-- threads
-- tiktok
 - snapchat
 - whatsapp
