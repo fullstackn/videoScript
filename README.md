@@ -1,6 +1,6 @@
 ### Overview
 
-Bunch of scripts to uploading videos to social networks
+Bunch of scripts to upload videos to social networks
 - Facebook
 - Instagram
 - Twitter
