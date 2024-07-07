@@ -1,3 +1,18 @@
+### Overview
+
+Bunch of scripts to uploading videos to social networks
+- Facebook
+- Instagram
+- Twitter
+- Threads (at the moment from public URLs only)
+- Tiktok (under construction)
+
+All scripts require created apps, access_tokens and some other credentials. 
+
+TODO
+- snapchat
+- whatsapp
+
 ### User access token generation (facebook)
 
 1. Register facebook developer, linked with target facebook profile
@@ -56,7 +71,3 @@ Params:
 ```
 14. Copy `access_token` to corresponding placeholder in `threads.py`
 15. This token expires in 60 days.
-
-TODO
-- snapchat
-- whatsapp
