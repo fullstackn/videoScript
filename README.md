@@ -71,3 +71,9 @@ Params:
 ```
 14. Copy `access_token` to corresponding placeholder in `threads.py`
 15. This token expires in 60 days.
+
+### Twitter
+TODO
+
+## Tiktok
+TODO

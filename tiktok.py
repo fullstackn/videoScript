@@ -22,7 +22,7 @@ def upload_thread(video_path, title, caption, tags):
             },
             "post_info": {
                 "title": text,
-                "privacy_level": "SELF_ONLY",
+                "privacy_level": "PUBLIC_TO_EVERYONE",
                 "disable_duet": 'false',
                 "disable_comment": 'true',
                 "disable_stitch": 'false',
