@@ -10,7 +10,8 @@ INTERVAL = 60
 BASE_URL = 'https://graph.facebook.com/v20.0'
 PERMANENT_USER_ACCESS_TOKEN = os.environ.get('USER_FB_TOKEN')
 
-def api_call(endpoint, data=None, method='GET', headers=None):
+
+def api_call(endpoint, data=None, method='GET', headers=None, files=None):
     if endpoint.startswith('http'):
         url = endpoint
     else:
@@ -114,7 +115,7 @@ def upload_facebook_reel(
     page_id = fb_page.get('id')
     # prepare upload (create container)
     start_upload = api_call(
-        endpoint=f'{page_id}/video_reels?access_token={access_token}&upload_phase={access_token}',
+        endpoint=f'{page_id}/video_reels?access_token={access_token}',
         method='POST',
         data={
             "upload_phase": "start",

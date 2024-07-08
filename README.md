@@ -12,6 +12,8 @@ All scripts require created apps, access_tokens and some other credentials.
 TODO
 - snapchat
 - whatsapp
+- still need to check direct post on ticktock (need get review for the app) 
+- make sure that big files uploading on ticktock
 
 ### User access token generation (facebook)
 

@@ -4,11 +4,10 @@ import requests
 from common import get_full_caption
 from utils import api_call
 
+ACCESS_TOKEN = 'act.UVnSLWjrFNfeV7IwSoykYQKKdzm7bt9jBE6WmfZ0yKR1PDL8StoXBWKBbDaC!5249.va'
 
-ACCESS_TOKEN = 'act.HciU22WO9PhQzUNvZ0sHKLZftbO2PSCx7ggivP1wx5VjTjD7Dgsnk5uT1Xzn!5204.va'
 
-
-def upload_thread(video_path, title, caption, tags):
+def upload_ticktock(video_path, title, caption, tags):
     text = get_full_caption(title, caption, tags)
     file_size = os.path.getsize(video_path)
     chunk_size = file_size
@@ -23,14 +22,14 @@ def upload_thread(video_path, title, caption, tags):
             "post_info": {
                 "title": text,
                 "privacy_level": "PUBLIC_TO_EVERYONE",
-                "disable_duet": 'false',
-                "disable_comment": 'true',
-                "disable_stitch": 'false',
+                "disable_duet": False,
+                "disable_comment": True,
+                "disable_stitch": False,
                 "video_cover_timestamp_ms": 1000
             },
         }
     post_data = api_call(
-        endpoint='https://open.tiktokapis.com/v2/post/publish/inbox/video/init/',
+        endpoint=f'https://open.tiktokapis.com/v2/post/publish/video/init/',
         data=json.dumps(data),
         headers={'Authorization': f'Bearer {ACCESS_TOKEN}', 'Content-Type': 'application/json; charset=UTF-8'},
         method='POST'
@@ -48,12 +47,23 @@ def upload_thread(video_path, title, caption, tags):
                      }
         )
         print(f'{upload_data=}')
+
         check = requests.post(
             url='https://open.tiktokapis.com/v2/post/publish/status/fetch/',
             json={'publish_id': publish_id},
             headers={'Authorization': f'Bearer {ACCESS_TOKEN}', 'Content-Type': 'application/json; charset=UTF-8'},
         )
-        print(check)
 
-upload_thread('v100.mp4', 'title', 'caption', ['t1','t2'])
+        while check.json()['data']['status'] not in ['FAILED', 'PUBLISH_COMPLETE']:
+            check = requests.post(
+                url='https://open.tiktokapis.com/v2/post/publish/status/fetch/',
+                json={'publish_id': publish_id},
+                headers={'Authorization': f'Bearer {ACCESS_TOKEN}', 'Content-Type': 'application/json; charset=UTF-8'},
+            )
+            print(check.json())
+        if check.json()['data']['status'] == 'FAILED':
+            raise RuntimeError(check.json())
+
+
+#upload_ticktock('v100.mp4', 'title', 'caption', ['t1','t2'])
 
